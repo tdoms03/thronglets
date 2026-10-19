@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TUCKERSOFT // THRONGLETS (1994 Sandboxed Edition)</title>
+    <script type="module" crossorigin src="/assets/index-Df5SO0wR.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dn-wUHC4.css">
+  </head>
+  <body>
+    <div id="app" class="crt-container">
+      <!-- Top Header / Containment Bar -->
+      <header class="top-bar">
+        <div class="brand">
+          <span class="brand-logo">🟡 TUCKERSOFT</span>
+          <span class="brand-title">THRONGLETS // RITMAN ENGINE v1.94</span>
+          <span class="containment-badge" title="All acoustic, optical, and network interfaces are strictly sandboxed.">
+            🔒 AIR-GAPPED SANDBOX: SECURE
+          </span>
+        </div>
+
+        <div class="top-metrics">
+          <div class="metric-chip">
+            <span class="metric-label">THRONG POP</span>
+            <span id="stat-pop" class="metric-value">4</span>
+          </div>
+          <div class="metric-chip">
+            <span class="metric-label">MAX GEN</span>
+            <span id="stat-gen" class="metric-value">1</span>
+          </div>
+          <div class="metric-chip">
+            <span class="metric-label">WELLBEING</span>
+            <span id="stat-harmony" class="metric-value">82%</span>
+          </div>
+          <div class="metric-chip">
+            <span class="metric-label">CPU ALLOC</span>
+            <span id="stat-cpu" class="metric-value">12 MHz</span>
+          </div>
+        </div>
+
+        <div class="top-controls">
+          <button id="btn-speed" class="retro-btn small">SPEED: 1x</button>
+          <button id="btn-synapse" class="retro-btn small active">SYNAPSES: ON</button>
+          <button id="btn-audio" class="retro-btn small active">AUDIO: ON</button>
+          <button id="btn-reset" class="retro-btn small danger">RESET</button>
+        </div>
+      </header>
+
+      <!-- Main Workspace -->
+      <main class="workspace">
+        <!-- Left Viewport + Care Toolbar -->
+        <section class="viewport-panel">
+          <div class="canvas-wrapper">
+            <canvas id="world-canvas" width="720" height="480"></canvas>
+            <div class="crt-scanlines"></div>
+            <div id="tool-hint" class="canvas-hint">
+              Click on the island to drop food for the Thronglets
+            </div>
+          </div>
+
+          <!-- Care & Colony Tools -->
+          <div class="toolbar">
+            <div class="tool-group">
+              <span class="group-title">CURSOR TOOLS</span>
+              <div class="tool-buttons">
+                <button class="tool-btn active" data-tool="feed">
+                  <span class="tool-icon">🍎</span>
+                  <span class="tool-name">Feed</span>
+                  <kbd>1</kbd>
+                </button>
+                <button class="tool-btn" data-tool="wash">
+                  <span class="tool-icon">🧽</span>
+                  <span class="tool-name">Wash</span>
+                  <kbd>2</kbd>
+                </button>
+                <button class="tool-btn" data-tool="toy">
+                  <span class="tool-icon">⚽</span>
+                  <span class="tool-name">Toy Orb</span>
+                  <kbd>3</kbd>
+                </button>
+                <button class="tool-btn" data-tool="inspect">
+                  <span class="tool-icon">🔍</span>
+                  <span class="tool-name">Pet / Inspect</span>
+                  <kbd>4</kbd>
+                </button>
+                <button class="tool-btn" data-tool="clean">
+                  <span class="tool-icon">🧹</span>
+                  <span class="tool-name">Sanitize</span>
+                  <kbd>5</kbd>
+                </button>
+              </div>
+            </div>
+
+            <div class="tool-group">
+              <span class="group-title">COLONY CARE</span>
+              <div class="tool-buttons">
+                <button id="act-feast" class="action-btn">🍎 Feast Drop</button>
+                <button id="act-rain" class="action-btn">🌧️ Cleansing Rain</button>
+                <button id="act-chirp" class="action-btn">🎵 Harmonic Chirp</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Sidebar: AI Brain Inspector & Throng Collective Terminal -->
+        <aside class="sidebar">
+          <!-- Individual Thronglet Brain Inspector -->
+          <div class="panel inspector-panel">
+            <div class="panel-header">
+              <span>🧠 AGENT NEURAL INSPECTOR</span>
+              <span id="insp-gen" class="badge">GEN 1</span>
+            </div>
+            <div id="inspector-content" class="panel-body">
+              <div class="agent-summary">
+                <div>
+                  <h2 id="insp-name">Pip-01</h2>
+                  <span id="insp-action" class="action-tag">WANDER</span>
+                </div>
+                <button id="btn-next-agent" class="retro-btn tiny">NEXT AGENT ▸</button>
+              </div>
+
+              <div id="insp-thought" class="thought-box">
+                "Awakening on the island..."
+              </div>
+
+              <!-- Biological & Social Needs -->
+              <div class="section-subtitle">HOMEOSTATIC NEEDS</div>
+              <div class="bars-grid">
+                <div class="bar-row">
+                  <span>Hunger</span>
+                  <div class="bar-track"><div id="bar-hunger" class="bar-fill green"></div></div>
+                  <span id="val-hunger" class="bar-val">80%</span>
+                </div>
+                <div class="bar-row">
+                  <span>Hygiene</span>
+                  <div class="bar-track"><div id="bar-hygiene" class="bar-fill cyan"></div></div>
+                  <span id="val-hygiene" class="bar-val">85%</span>
+                </div>
+                <div class="bar-row">
+                  <span>Joy / Fun</span>
+                  <div class="bar-track"><div id="bar-fun" class="bar-fill pink"></div></div>
+                  <span id="val-fun" class="bar-val">75%</span>
+                </div>
+                <div class="bar-row">
+                  <span>Energy</span>
+                  <div class="bar-track"><div id="bar-energy" class="bar-fill yellow"></div></div>
+                  <span id="val-energy" class="bar-val">85%</span>
+                </div>
+                <div class="bar-row">
+                  <span>Social</span>
+                  <div class="bar-track"><div id="bar-social" class="bar-fill purple"></div></div>
+                  <span id="val-social" class="bar-val">75%</span>
+                </div>
+                <div class="bar-row">
+                  <span>Mitosis</span>
+                  <div class="bar-track"><div id="bar-mitosis" class="bar-fill gold"></div></div>
+                  <span id="val-mitosis" class="bar-val">0%</span>
+                </div>
+              </div>
+
+              <!-- Utility AI Decision Engine -->
+              <div class="section-subtitle">LIVE AI UTILITY EVALUATION</div>
+              <div id="utility-list" class="utility-list"></div>
+
+              <!-- Genome & Learned Weights -->
+              <div class="section-subtitle">GENOME & REINFORCED WEIGHTS</div>
+              <div id="genome-grid" class="genome-grid"></div>
+            </div>
+          </div>
+
+          <!-- Throng Collective Consciousness Log -->
+          <div class="panel terminal-panel">
+            <div class="panel-header">
+              <span>📡 THRONG COLLECTIVE SIGNAL</span>
+              <span id="stat-chirps" class="badge">0 CHIRPS</span>
+            </div>
+            <div id="log-container" class="terminal-log"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+  </body>
+</html>
